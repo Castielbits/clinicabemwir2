@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-wir | Cuidado integrado para dor crônica e sofrimento persistente</title>
+  <meta name="description" content="A Bem-wir integra fisioterapia especializada em neurociências, psicologia e neuromodulação para quadros de dor crônica, TEPT, depressão e dores orofaciais persistentes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+/* ==== VARIÁVEIS DE MARCA & PALETA ==== */
+:root {
+  /* Cores Principais - Manual Bem-wir */
+  --color-purple: #5f2483;
+  --color-purple-dark: #41145b;
+  --color-sand: #fde9a2;
+  --color-pink: #fbdad0;
+  --color-green: #d4e198;
+  --color-gray: #a8a8a7;
+
+  /* Colors layout */
+  --bg-primary: #FAF8F2; /* Fundo creme super suave inspirado na ideia */
+  --text-dark: #2A2522;
+  --text-light: #ffffff;
+  
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ==== RESET ESTÉTICO ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .badge-tag {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container-narrow {
+  max-width: 1000px;
+}
+
+.text-center {
+  text-align: center;
+}
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+/* ==== BUTTONS ==== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.btn-primary {
+  background-color: #A36B4F; /* Tom cobre/marrom elegante inspirado na referência da Jéssica Fernandes */
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(163, 107, 79, 0.3);
+}
+.btn-primary:hover {
+  background-color: #8A553C;
+}
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-purple);
+  border: 1px solid var(--color-purple);
+}
+.btn-ghost:hover {
+  background-color: rgba(95, 36, 131, 0.05);
+}
+.btn-secondary-solid {
+  background-color: #A36B4F;
+  color: #fff;
+  border: none;
+  padding: 15px 36px;
+}
+.btn-secondary-solid:hover {
+  background-color: #8A553C;
+}
+.btn-large {
+  padding: 16px 36px;
+  font-size: 0.95rem;
+}
+
+/* ==== NAVBAR ==== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+.logo img {
+  height: 50px;
+  width: auto;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.header-social {
+  color: var(--color-purple);
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  transition: opacity 0.3s;
+}
+.header-social:hover {
+  opacity: 0.7;
+}
+
+/* ==== HERO SECTION ==== */
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  overflow: hidden;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+.neurons-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.hero-bg-photo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+}
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg-primary) 38%, rgba(250,248,242,0.6) 60%, transparent 80%);
+  z-index: 2;
+}
+.hero-container {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  padding-bottom: 5rem;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+.hero-text {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.hero-text h1 strong {
+  font-weight: 700;
+  color: var(--color-purple);
+}
+.hero-text p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+.floating-badge {
+  position: absolute;
+  top: 25%;
+  right: 14%;
+  width: 90px;
+  height: auto;
+  animation: spin 12s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+@keyframes colorToPurple {
+  from { color: #555; }
+  to   { color: var(--color-purple); }
+}
+.hero-highlight {
+  color: #555;
+  animation: colorToPurple 0.9s ease forwards 1s;
+}
+
+/* ==== MARQUEE ==== */
+.marquee {
+  background-color: var(--color-purple);
+  color: var(--color-sand);
+  padding: 1rem 0;
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+.marquee-content span {
+  padding: 0 2rem;
+}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* ==== IDENTITY SECTION ==== */
+.identity-section {
+  background-color: var(--color-purple);
+  color: var(--text-light);
+  padding: 6rem 0;
+  position: relative;
+}
+.identity-box {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.identity-header {
+  flex: 1;
+}
+.identity-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-sand);
+  font-weight: 300;
+}
+.identity-body {
+  flex: 1;
+  font-size: 1.05rem;
+  color: #eee;
+}
+.identity-body p { margin-bottom: 1rem; }
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.benefit-card {
+  background-color: rgba(255,255,255,0.05); /* transparência leve no escuro */
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.benefit-icon {
+  width: 40px; height: 40px;
+  background-color: var(--color-sand);
+  color: var(--color-purple);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.benefit-text h3 {
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ==== SYMPTOMS SECTION ==== */
+.symptoms-section {
+  padding: 6rem 0;
+  background-color: var(--color-purple); /* Continuidade visual */
+}
+.symptoms-card {
+  background-color: var(--color-sand); /* Cor areia da Bem-wir */
+  border-radius: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+}
+.symptoms-list {
+  flex: 1;
+  padding: 4rem 3rem;
+}
+.symptoms-list h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #796859; /* tom terroso/dourado escuro para contraste suave */
+}
+.symptoms-list ul {
+  list-style: none;
+}
+.symptoms-list li {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.symptoms-list .icon {
+  color: #A36B4F; /* Tom botão de destaque */
+  font-size: 0.8rem;
+}
+.symptoms-image {
+  flex: 0.8;
+  position: relative;
+}
+.symptoms-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.symptoms-badge {
+  position: absolute;
+  bottom: 25%;
+  right: 15%;
+  background: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  letter-spacing: 1px;
+}
+.symptoms-caption {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  text-align: center;
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  color: #333;
+}
+.symptoms-results {
+  max-width: 800px;
+  margin: 6rem auto 0;
+  background-color: var(--bg-primary); /* Fundo claro da página */
+  padding: 4rem;
+  border-radius: 20px;
+}
+.symptoms-results h2 {
+  color: #555;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+}
+.symptoms-results ul { list-style: none; }
+.symptoms-results li { margin-bottom: 1rem; color: #555; }
+
+/* ==== PROGRAMS SECTION ==== */
+.programs-section {
+  padding: 6rem 0;
+  background-color: var(--color-green); /* Verde institucional Bem-wir */
+}
+.badge-tag {
+  display: inline-block;
+  background-color: rgba(95, 36, 131, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-purple);
+  font-weight: 700;
+}
+.section-title {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.section-subtitle {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  color: #444;
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.program-card {
+  background-color: #FAF8F2;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.program-card:hover {
+  transform: translateY(-5px);
+}
+.program-img {
+  height: 200px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+}
+.program-info {
+  padding: 2rem;
+}
+.arrow-nav {
+  display: block;
+  font-size: 0.8rem;
+  color: #A36B4F;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.program-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.program-info p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ==== PROCESS SECTION ==== */
+.process-section {
+  padding: 6rem 0;
+  background-color: #8c9071; /* tom verde musgo pra contrastar suavemente, ou podemos usar o cinza da marca */
+  color: #fff;
+}
+.container-process {
+  max-width: 900px;
+}
+.tag-white {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.process-header h2 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 2.4rem;
+  margin: 1rem 0;
+}
+.process-header p {
+  color: #eee;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.step-card {
+  background-color: #D3CAB2; /* Tom areia escuro */
+  border-radius: 8px;
+  display: flex;
+  padding: 1.5rem;
+  align-items: flex-start;
+  gap: 1.5rem;
+  color: var(--text-dark);
+}
+.step-number {
+  background-color: #A36B4F;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.step-content h4 {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ==== FINAL CTA / FORM ==== */
+.final-cta-section {
+  padding: 7rem 0;
+  background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.final-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.final-cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.form-intro-col {
+  color: #fff;
+  padding-top: 1rem;
+}
+.form-intro-col .form-tag {
+  display: inline-block;
+  background: var(--color-sand);
+  color: var(--color-purple);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+}
+.form-intro-col h2 {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  text-transform: none;
+}
+.form-intro-col h2 em {
+  font-style: normal;
+  color: var(--color-sand);
+}
+.form-intro-col p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.trust-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+}
+.trust-item svg {
+  flex-shrink: 0;
+  color: var(--color-sand);
+}
+.form-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.form-card-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid rgba(95,36,131,0.08);
+}
+.form-step-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+  color: #A36B4F;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.form-card-header h3 {
+  font-size: 1.3rem;
+  color: var(--color-purple);
+  text-transform: none;
+  font-weight: 700;
+}
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #333;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-purple);
+  box-shadow: 0 0 0 3px rgba(95,36,131,0.1);
+  background: #fff;
+}
+.form-group textarea {
+  resize: none;
+  min-height: 80px;
+}
+.select-wrap {
+  position: relative;
+}
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+.btn-form-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--color-purple-dark), var(--color-purple));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s, transform 0.2s;
+  margin-top: 0.5rem;
+}
+.btn-form-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.form-privacy {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #aaa;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+/* ==== FOOTER ==== */
+.site-footer {
+  background-color: var(--color-purple-dark);
+  color: rgba(255,255,255,0.7);
+  padding: 4rem 0 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-brand img {
+  height: 44px;
+  width: auto;
+  margin-bottom: 1.25rem;
+  filter: brightness(0) invert(1);
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 280px;
+  color: rgba(255,255,255,0.6);
+}
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-sand);
+  margin-bottom: 1.25rem;
+}
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.footer-col ul li a {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover {
+  color: #fff;
+}
+.footer-col ul li {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+}
+.footer-bottom {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+}
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+.footer-social a {
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: var(--color-sand);
+}
+@media (max-width: 900px) {
+  .form-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* ==== HERO EYEBROW & BADGES ==== */
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #A36B4F;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-transform: none;
+  line-height: 1.25;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(95, 36, 131, 0.2);
+  background: rgba(95, 36, 131, 0.05);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-purple);
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+}
+
+/* ==== IMPACT / SCIENCE SECTION (NOVO) ==== */
+.impact-section {
+  background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.impact-content {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+.impact-tag {
+  display: inline-block;
+  background-color: var(--color-sand);
+  color: var(--color-purple);
+  padding: 0.45rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 2.5px;
+  margin-bottom: 1.75rem;
+}
+.impact-content h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.impact-content p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-family: var(--font-body);
+}
+.btn-sand {
+  background-color: var(--color-sand);
+  color: var(--color-purple);
+  border: none;
+  font-weight: 800;
+  display: inline-block;
+  padding: 16px 36px;
+}
+.btn-sand:hover {
+  background-color: #f5dc8a;
+}
+
+/* ==== SELECT FIELDS ==== */
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+.field select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* ==== FORM NOTE ==== */
+.form-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+/* FLOAT WHATSAPP */
+.float-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+.float-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  .hero-content { flex-direction: column; text-align: center; }
+  .hero-text { flex: 0 0 100%; max-width: 100%; z-index: 5; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-bg-photo { width: 100%; opacity: 0.35; object-position: center top; }
+  .hero-gradient-overlay { background: linear-gradient(to bottom, var(--bg-primary) 0%, rgba(250,248,242,0.7) 40%, var(--bg-primary) 90%); }
+  .floating-badge { top: 10%; right: 5%; width: 65px; opacity: 0.8; }
+  .hero-badges { justify-content: center; }
+  .nav-links { display: none; }
+  .identity-box { flex-direction: column; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .symptoms-card { flex-direction: column; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .impact-content h2 { font-size: 1.55rem; }
+  .impact-section { padding: 3.5rem 0; }
+  
+  /* Already added via another block, but let's centralize the remaining mobile tweaks if needed */
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Top Hero Section -->
+  <section class="hero-section">
+    <!-- Fundo animado de neurônios -->
+    <canvas id="neuronsCanvas" class="neurons-canvas"></canvas>
+    
+    <!-- Foto de fundo full-bleed à direita -->
+    <img src="images/Banner-Bem-Wir-png.png" class="hero-bg-photo" alt="Especialista Bem-wir">
+    <!-- Gradiente que faz a foto sumir suavemente à esquerda -->
+    <div class="hero-gradient-overlay"></div>
+    <!-- Logo girando no ombro -->
+    <img src="images/logos/logo-bem-wir.png" alt="Logo Bem-wir" class="floating-badge">
+
+    <div class="container hero-container">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="images/logos/logo-bem-wir-com-texto.png" alt="Bem-wir Logo">
+        </a>
+        <div class="nav-links">
+          <a href="#metodo" class="btn btn-ghost">CONHEÇA O MÉTODO</a>
+          <a href="#elegibilidade" class="btn btn-primary">VER SE SOU ELEGÍVEL</a>
+          <a href="https://instagram.com/bemwir" class="header-social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-eyebrow">Programas integrados para dor crônica e sofrimento persistente</span>
+          <h1>Cuidar da dor também é <span class="hero-highlight">cuidar da vida</span> em volta dela.</h1>
+          <p>
+            A Bem-wir integra fisioterapia especializada em neurociências, psicologia e neuromodulação para acompanhar o corpo, o sistema nervoso e o contexto emocional como partes de um mesmo processo.
+          </p>
+          <p>Quando a dor atravessa sono, humor, atenção, trabalho e vínculos, o cuidado precisa ser clínico, coordenado e humano.</p>
+          <div class="hero-badges">
+            <span class="badge">Fibromialgia</span>
+            <span class="badge">Depressão</span>
+            <span class="badge">TEPT</span>
+            <span class="badge">Dores orofaciais crônicas</span>
+          </div>
+          <a href="#elegibilidade" class="btn btn-primary btn-large">VER SE SOU ELEGÍVEL</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Banner -->
+  <div class="marquee">
+    <div class="marquee-content">
+      <span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span>
+      <span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span>
+    </div>
+    <div class="marquee-content highlight" aria-hidden="true">
+      <span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span>
+      <span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span><span>BEM-WIR</span>
+    </div>
+  </div>
+
+  <!-- Impact / Ciência Strip (NOVO — solicitado pela cliente) -->
+  <section class="impact-section">
+    <div class="container">
+      <div class="impact-content">
+        <span class="impact-tag">A CIÊNCIA COMPROVA</span>
+        <h2>A neuromodulação transforma vidas — com resultados comprovados pela neurociência, não por promessas.</h2>
+        <p>Depois de anos tentando tratamentos pontuais sem resultado duradouro, existe um caminho clínico diferente. Psicologia, fisioterapia especializada em neurociências e neuromodulação atuando juntas, pelo mesmo objetivo.</p>
+        <a href="#elegibilidade" class="btn btn-sand btn-large">QUERO DESCOBRIR SE É PARA MIM</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Identidade e Missão Section -->
+  <section class="identity-section" id="metodo">
+    <div class="container container-narrow">
+      <div class="identity-box">
+        <div class="identity-header">
+          <h2>PSICOLOGIA, FISIOTERAPIA E NEUROMODULAÇÃO EM CONVERSA CONSTANTE.</h2>
+        </div>
+        
+        <div class="identity-body">
+          <p><em>"Muitos pacientes chegam depois de anos entre abordagens pontuais, melhoras parciais e recaídas. O ponto de partida aqui é entender o conjunto — e não apenas o sintoma mais visível."</em></p>
+          <p>O método combina avaliação ampla, plano personalizado e acompanhamento contínuo.</p>
+          <p>Não é uma sequência de procedimentos avulsos. É um raciocínio clínico compartilhado entre fisioterapia em neurociências, psicologia e neuromodulação.</p>
+          <p>Tudo voltado a um só fim: construir uma base física e emocional real, com cuidado clínico menos fragmentado do que você já recebeu.</p>
+        </div>
+      </div>
+
+      <!-- Diferenciais em Cards -->
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">
+            <h3>FISIOTERAPIA EM NEUROCIÊNCIAS</h3>
+            <p>Leitura corporal e funcional orientada pelo funcionamento do sistema nervoso. Sem protocolo engessado, sem promessa genérica.</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">
+            <h3>PSICOLOGIA DA DOR E TRAUMA</h3>
+            <p>Escuta e intervenção clínica para trauma, humor, dor e reorganização da rotina de quem sofre persistentemente.</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">
+            <h3>NEUROMODULAÇÃO INTEGRADA</h3>
+            <p>Recurso inserido no programa quando faz sentido clínico real — em diálogo com todo o restante do tratamento.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="#elegibilidade" class="btn btn-secondary-solid">VER SE SOU ELEGÍVEL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions Section -->
+  <section class="symptoms-section">
+    <div class="symptoms-card">
+      <div class="symptoms-list">
+        <h2>TUDO BEM PRECISAR DE APOIO. VOCÊ NÃO ESTÁ SÓ.</h2>
+        <ul>
+          <li><span class="icon">✔</span> Dor crônica que organiza e limita toda a sua rotina</li>
+          <li><span class="icon">✔</span> Fibromialgia com dor difusa, cansaço e instabilidade persistente</li>
+          <li><span class="icon">✔</span> Depressão e sofrimento que drenam energia e roubam previsibilidade</li>
+          <li><span class="icon">✔</span> TEPT e hiperalerta que afetam sono, atenção e relações</li>
+          <li><span class="icon">✔</span> Dores orofaciais crônicas (mandíbula, face, cabeça, pescoço)</li>
+          <li><span class="icon">✔</span> Insônia e fadiga associadas à dor contínua</li>
+          <li><span class="icon">✔</span> Ansiedade e tensão corporal que se retroalimentam ao longo do dia</li>
+          <li><span class="icon">✔</span> Histórico de tentativas sem resultado duradouro</li>
+        </ul>
+      </div>
+      <div class="symptoms-image">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Bem-Estar paciente">
+        <div class="symptoms-badge">A RESPOSTA QUE VOCÊ MERECE EXISTE.</div>
+        <p class="symptoms-caption">A Bem-wir foi pensada para quem já tentou de tudo e ainda busca um cuidado que <strong>funcione de verdade.</strong></p>
+      </div>
+    </div>
+    
+    <div class="symptoms-results">
+        <h2>CUIDAR DA DOR.<br>É DEVOLVER A VIDA EM VOLTA DELA.</h2>
+        <ul>
+          <li><span class="icon">✔</span> <strong>Autonomia e regulação</strong> para confiar no próprio corpo novamente.</li>
+          <li><span class="icon">✔</span> <strong>Menos sobrecarga de dor e ansiedade</strong>, mais calma e presença no dia a dia.</li>
+          <li><span class="icon">✔</span> <strong>Clareza mental</strong> para focar e organizar o autocuidado sem esforço extremo.</li>
+          <li><span class="icon">✔</span> <strong>Mais energia e disposição</strong> para viver o presente com leveza real.</li>
+          <li><span class="icon">✔</span> <strong>Um raciocínio clínico integrado</strong> que trata o conjunto — não partes isoladas.</li>
+        </ul>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="programs-section">
+    <div class="container text-center">
+      <div class="badge-tag">CONHEÇA OS SERVIÇOS</div>
+      <h2 class="section-title">O PRÓXIMO PASSO PARA A SUA<br>ESTABILIDADE E SAÚDE</h2>
+      <p class="section-subtitle">Cada frente clínica entra na medida certa para o seu caso. O cuidado tem a sua forma — e começa com uma avaliação honesta.</p>
+
+      <div class="programs-grid">
+        
+        <div class="program-card">
+          <div class="program-img zoom-img">
+            <img src="images/Camada%206.png" alt="Fisioterapia em Neurociências" style="object-fit: contain; width: 60%; margin: 2rem auto; display: block; opacity: 0.8;">
+          </div>
+          <div class="program-info">
+            <span class="arrow-nav">&lt; Serviço</span>
+            <h3>FISIOTERAPIA EM NEUROCIÊNCIAS</h3>
+            <p>Leitura corporal e funcional orientada pelo sistema nervoso para dor crônica, fibromialgia e dores orofaciais persistentes.</p>
+          </div>
+        </div>
+
+        <div class="program-card center-card">
+          <div class="program-img zoom-img">
+            <img src="images/Camada%205.png" alt="Psicologia" style="object-fit: contain; width: 60%; margin: 2rem auto; display: block; opacity: 0.8;">
+          </div>
+          <div class="program-info">
+            <span class="arrow-nav">Serviço</span>
+            <h3>PSICOLOGIA DA DOR E TRAUMA</h3>
+            <p>Escuta clínica para sofrimento persistente, trauma, regulação emocional e impacto da dor sobre a vida prática e as relações.</p>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-img zoom-img">
+            <img src="images/Camada%203.png" alt="Neuromodulação" style="object-fit: contain; width: 60%; margin: 2rem auto; display: block; opacity: 0.8;">
+          </div>
+          <div class="program-info">
+            <span class="arrow-nav">Serviço &gt;</span>
+            <h3>NEUROMODULAÇÃO</h3>
+            <p>Recurso avançado inserido dentro do programa quando há indicação clínica real. Atua em circuitos de dor, humor, atenção e resposta ao estresse.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-5">
+        <a href="#elegibilidade" class="btn btn-secondary-solid">VER SE SOU ELEGÍVEL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container container-process">
+      
+      <div class="process-header">
+        <div class="badge-tag tag-white">ETAPAS DO PROCESSO</div>
+        <h2>DO PRIMEIRO CONTATO<br>À AUTONOMIA DE VOLTA.</h2>
+        <p>Conheça como o método de cuidado integrado conduz o paciente da crise à estabilidade real.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h4>LEITURA CLÍNICA AMPLA</h4>
+            <p>A triagem considera sintomas, histórico, rotina, respostas anteriores de tratamento e sinais de desregulação do sistema nervoso.</p>
+          </div>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h4>PROGRAMA INTEGRADO</h4>
+            <p>Fisioterapia em neurociências, psicologia e neuromodulação entram na medida certa para cada caso, sem excesso de promessa e sem protocolo engessado.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h4>AJUSTE AO LONGO DO PROCESSO</h4>
+            <p>A condução clínica é revista com base na resposta do paciente, preservando coerência entre corpo, emoção e vida prática.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h4>REAVALIAÇÃO E AUTONOMIA</h4>
+            <p>Monitoramos sua evolução e trabalhamos para devolver a confiança no próprio corpo — com autonomia real e qualidade de vida sustentável.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final CTA + Elegibilidade -->
+  <section class="final-cta-section" id="elegibilidade">
+    <div class="container">
+      <div class="form-layout">
+
+        <!-- Coluna Esquerda: Pitch -->
+        <div class="form-intro-col">
+          <span class="form-tag">ELEGIBILIDADE</span>
+          <h2>Veja se o método Bem-wir faz sentido para o <em>seu caso.</em></h2>
+          <p>Responda algumas perguntas e nossa equipe usa essas informações para fazer um primeiro filtro clínico e orientar o próximo passo com cuidado e sem pressa.</p>
+          <div class="trust-items">
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+              Análise clínica individualizada
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+              Retorno em até 24h pela equipe
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+              Seus dados são confidenciais
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+              Sem compromisso na primeira conversa
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Formulário -->
+        <div class="form-card">
+          <div class="form-card-header">
+            <span class="form-step-label">Formulário de elegibilidade</span>
+            <h3>Conta um pouco sobre você</h3>
+          </div>
+          <form class="form-fields eligibility-form" novalidate data-whatsapp-form>
+            <p class="form-message" role="alert" style="color:#c00;font-size:0.85rem;"></p>
+            <div class="form-row">
+              <div class="form-group field">
+                <label for="f-nome">Nome completo *</label>
+                <input id="f-nome" type="text" name="nome" required placeholder="Ana Beatriz">
+              </div>
+              <div class="form-group field">
+                <label for="f-whatsapp">WhatsApp *</label>
+                <input id="f-whatsapp" type="tel" name="whatsapp" required placeholder="(11) 9 0000-0000">
+              </div>
+            </div>
+            <div class="form-group field">
+              <label for="f-queixa">Principal queixa *</label>
+              <div class="select-wrap">
+                <select id="f-queixa" name="queixa" required>
+                  <option value="">Selecione...</option>
+                  <option value="Dor crônica">Dor crônica</option>
+                  <option value="Fibromialgia">Fibromialgia</option>
+                  <option value="Depressão / Ansiedade">Depressão / Ansiedade</option>
+                  <option value="TEPT">TEPT</option>
+                  <option value="Dores orofaciais / DTM">Dores orofaciais / DTM</option>
+                  <option value="Outra">Outra</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group field">
+                <label for="f-tempo">Há quanto tempo?*</label>
+                <div class="select-wrap">
+                  <select id="f-tempo" name="tempo" required>
+                    <option value="">Selecione...</option>
+                    <option value="Menos de 6 meses">Menos de 6 meses</option>
+                    <option value="6 meses a 1 ano">6 meses a 1 ano</option>
+                    <option value="1 a 3 anos">1 a 3 anos</option>
+                    <option value="Mais de 3 anos">Mais de 3 anos</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group field">
+                <label for="f-tratamentos">Tratamentos anteriores?*</label>
+                <div class="select-wrap">
+                  <select id="f-tratamentos" name="tratamentos" required>
+                    <option value="">Selecione...</option>
+                    <option value="Sim, sem melhora">Sim, sem melhora</option>
+                    <option value="Sim, com melhora parcial">Sim, com melhora parcial</option>
+                    <option value="Não">Não</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group field">
+              <label for="f-objetivo">Seu objetivo com o tratamento *</label>
+              <textarea id="f-objetivo" name="objetivo" required rows="2" placeholder="O que você espera conquistar com o método?"></textarea>
+            </div>
+            <button type="submit" class="btn-form-submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+              ENVIAR E FINALIZAR NO WHATSAPP
+            </button>
+            <p class="form-privacy">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Seus dados são protegidos e usados somente para retorno clínico.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logos/logo-bem-wir-com-texto.png" alt="Bem-wir">
+          <p>Cuidado integrado para dor crônica, sofrimento persistente e condições do sistema nervoso. Psicologia, fisioterapia e neuromodulação em conversa constante.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="#metodo">O Método</a></li>
+            <li><a href="#elegibilidade">Sou Elegível?</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Processo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li>Fisioterapia em Neurociências</li>
+            <li>Psicologia da Dor</li>
+            <li>Neuromodulação</li>
+            <li>Teleconsulta</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="https://instagram.com/bemwir" target="_blank" rel="noopener">@bemwir</a></li>
+            <li><a href="#elegibilidade">Fale conosco</a></li>
+            <li>Atendimento online</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Bem-wir. Todos os direitos reservados.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/bemwir" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Float WhatsApp -->
+  <a href="#" class="float-whatsapp" aria-label="Abrir WhatsApp" data-whatsapp-message="Olá, quero saber mais sobre a Bem-wir.">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+    </svg>
+  </a>
+
+  <script>
+const siteConfig = {
+  whatsappNumber: "",
+  defaultMessage: "Olá, quero saber mais sobre a Bem-wir.",
+  formIntro: "Olá, preenchi o formulário de elegibilidade da Bem-wir."
+};
+
+function buildWhatsAppUrl(message) {
+  const cleanNumber = siteConfig.whatsappNumber.replace(/\D/g, "");
+  const text = encodeURIComponent(message || siteConfig.defaultMessage);
+
+  if (cleanNumber) {
+    return `https://wa.me/${cleanNumber}?text=${text}`;
+  }
+
+  return `https://api.whatsapp.com/send?text=${text}`;
+}
+
+function setupWhatsAppLinks() {
+  document.querySelectorAll("[data-whatsapp-message]").forEach((link) => {
+    const message = link.getAttribute("data-whatsapp-message") || siteConfig.defaultMessage;
+    link.setAttribute("href", buildWhatsAppUrl(message));
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+}
+
+function setupMenu() {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".site-nav");
+
+  if (!toggle || !nav) {
+    return;
+  }
+
+  toggle.addEventListener("click", () => {
+    const nextState = !nav.classList.contains("is-open");
+    nav.classList.toggle("is-open", nextState);
+    toggle.setAttribute("aria-expanded", String(nextState));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+function setActiveNavLink() {
+  const currentPath = window.location.pathname.replace(/\/$/, "");
+
+  document.querySelectorAll(".site-nav a[href]").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#")) {
+      return;
+    }
+
+    const url = new URL(href, window.location.href);
+    const linkPath = url.pathname.replace(/\/$/, "");
+    if (linkPath === currentPath) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+}
+
+function createFieldError(field, message) {
+  let error = field.querySelector(".field__error");
+  if (!error) {
+    error = document.createElement("span");
+    error.className = "field__error";
+    field.appendChild(error);
+  }
+
+  error.textContent = message;
+}
+
+function clearFieldError(field) {
+  const input = field.querySelector("input, textarea, select");
+  if (input) {
+    input.removeAttribute("aria-invalid");
+  }
+
+  const error = field.querySelector(".field__error");
+  if (error) {
+    error.textContent = "";
+  }
+}
+
+function validateForm(form) {
+  let isValid = true;
+
+  form.querySelectorAll(".field").forEach((field) => {
+    clearFieldError(field);
+    const input = field.querySelector("input, textarea, select");
+
+    if (!input) {
+      return;
+    }
+
+    const isEmpty = input.tagName === "SELECT"
+      ? !input.value.trim()
+      : !input.value.trim();
+
+    if (input.hasAttribute("required") && isEmpty) {
+      input.setAttribute("aria-invalid", "true");
+      createFieldError(field, "Preencha este campo para continuar.");
+      isValid = false;
+    }
+  });
+
+  return isValid;
+}
+
+function openWhatsApp(message) {
+  const url = buildWhatsAppUrl(message);
+  const opened = window.open(url, "_blank", "noopener");
+
+  if (!opened) {
+    window.location.href = url;
+  }
+}
+
+function setupForm() {
+  const form = document.querySelector("[data-whatsapp-form]");
+  if (!form) {
+    return;
+  }
+
+  const messageBox = form.querySelector(".form-message");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    messageBox.textContent = "";
+
+    if (!validateForm(form)) {
+      messageBox.textContent = "Revise os campos obrigatórios para montar a mensagem.";
+      return;
+    }
+
+    const data = new FormData(form);
+    const lines = [
+      siteConfig.formIntro,
+      "",
+      `Nome completo: ${data.get("nome")?.toString().trim() || ""}`,
+      `WhatsApp: ${data.get("whatsapp")?.toString().trim() || ""}`,
+      `Queixa principal: ${data.get("queixa")?.toString().trim() || ""}`,
+      `Há quanto tempo: ${data.get("tempo")?.toString().trim() || ""}`,
+      `Tratamentos anteriores: ${data.get("tratamentos")?.toString().trim() || ""}`,
+      `Objetivo com o tratamento: ${data.get("objetivo")?.toString().trim() || ""}`
+    ];
+
+    openWhatsApp(lines.join("\n"));
+    messageBox.textContent = "WhatsApp aberto com o resumo do formulário.";
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupWhatsAppLinks();
+  setupMenu();
+  setActiveNavLink();
+  setupForm();
+  initNeurons();
+});
+
+// ==== BACKGROUND NEURÔNIOS ====
+function initNeurons() {
+  const canvas = document.getElementById('neuronsCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  let width, height;
+  let particles = [];
+  
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    // O canvas vai ocupar a altura do hero
+    height = canvas.height = canvas.parentElement.offsetHeight;
+  }
+  
+  window.addEventListener('resize', resize);
+  resize();
+  
+  // Limita a quantidade de neurônios para performance e manter suave
+  const particleCount = Math.min(Math.floor(width / 20), 100);
+  
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 1.5 + 0.5;
+    }
+    
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      if (this.x < 0 || this.x > width) this.vx = -this.vx;
+      if (this.y < 0 || this.y > height) this.vy = -this.vy;
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(95, 36, 131, 0.5)'; // Roxo da Bem-wir
+      ctx.fill();
+    }
+  }
+  
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+      
+      // Conecta os pontos mais próximos
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 130) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(95, 36, 131, ${0.15 * (1 - distance / 130)})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+}
+</script>
+</body>
+</html>
