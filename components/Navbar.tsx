@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import logoComTexto from "@/images/logos/logo-bem-wir-com-texto.png";
 import { navLinks, siteConfig } from "@/data/siteContent";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -47,8 +47,8 @@ export default function Navbar() {
           <Image
             src={logoComTexto}
             alt="Bem-wir"
-            height={32}
-            className="h-8 w-auto transition-all duration-500"
+            height={40}
+            className="h-10 w-auto transition-all duration-500"
             style={{
               filter: solid ? "none" : "brightness(0) invert(1)",
             }}
@@ -84,38 +84,47 @@ export default function Navbar() {
 
         {/* Hamburger — mobile */}
         <button
-          className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300 md:hidden ${
-            solid
-              ? "border-dark/12 text-dark"
-              : "border-white/25 text-white"
-          }`}
+          className={`menu-toggle md:hidden ${solid ? "menu-toggle--solid" : "menu-toggle--light"} ${mobileOpen ? "is-open" : ""}`}
           onClick={() => setMobileOpen((open) => !open)}
-          aria-label="Abrir menu"
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          <span className="menu-toggle-bar menu-toggle-bar--top" />
+          <span className="menu-toggle-bar menu-toggle-bar--mid" />
+          <span className="menu-toggle-bar menu-toggle-bar--bot" />
         </button>
       </div>
 
       {/* Mobile drawer */}
       <div
-        className={`overflow-hidden border-t border-dark/6 bg-cream/98 backdrop-blur-xl transition-all duration-300 md:hidden ${
-          mobileOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`mobile-drawer md:hidden ${mobileOpen ? "is-open" : ""}`}
+        aria-hidden={!mobileOpen}
       >
-        <div className="px-6 py-5">
-          <div className="flex flex-col gap-1">
-            {navLinks.map((link) => (
+        <div className="mobile-drawer-inner">
+          <p
+            className="eyebrow text-dark/40 mb-4"
+            style={{ fontSize: "0.6rem" }}
+          >
+            navegação
+          </p>
+          <nav className="flex flex-col">
+            {navLinks.map((link, idx) => (
               <Link
                 key={link.href}
                 href={resolveHref(link.href, link.kind)}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-semibold text-ink/80 transition-colors hover:bg-dark/4 hover:text-dark"
+                className="mobile-drawer-link"
+                style={{ transitionDelay: mobileOpen ? `${idx * 40 + 80}ms` : "0ms" }}
               >
-                {link.label}
+                <span className="mobile-drawer-link-label">{link.label}</span>
+                <span className="mobile-drawer-link-arrow" aria-hidden>→</span>
               </Link>
             ))}
-          </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          </nav>
+
+          <div className="mobile-drawer-divider" />
+
+          <div className="flex flex-col gap-3">
             <Link
               href={homeAnchor("#elegibilidade")}
               onClick={() => setMobileOpen(false)}
@@ -128,13 +137,30 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               target="_blank"
               rel="noreferrer"
-              className="btn-primary btn-outline-dark text-center text-sm"
+              className="mobile-drawer-whatsapp"
             >
-              {siteConfig.secondaryCtaLabel}
+              <span className="mobile-drawer-whatsapp-icon">
+                <WhatsAppIcon size={18} />
+              </span>
+              <span className="flex flex-col text-left leading-tight">
+                <span className="eyebrow text-dark/40" style={{ fontSize: "0.55rem" }}>
+                  WhatsApp direto
+                </span>
+                <span className="text-sm font-bold text-ink">
+                  {siteConfig.whatsappDisplay}
+                </span>
+              </span>
             </Link>
           </div>
         </div>
       </div>
+
+      {/* Backdrop blur atrás do drawer */}
+      <div
+        className={`mobile-drawer-backdrop md:hidden ${mobileOpen ? "is-open" : ""}`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden
+      />
     </header>
   );
 }

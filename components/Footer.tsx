@@ -1,9 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import logoComTexto from "@/images/logos/logo-bem-wir-com-texto.png";
 import { navLinks, siteConfig } from "@/data/siteContent";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const resolveHref = (href: string, kind: "anchor" | "page") => {
+    if (kind === "anchor") {
+      return pathname === "/" ? href : `/${href}`;
+    }
+    return href;
+  };
+
   return (
     <footer className="section-dark-deep py-16">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
@@ -31,7 +43,7 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.kind === "anchor" ? `/${link.href}` : link.href}
+                  href={resolveHref(link.href, link.kind)}
                   className="text-white/45 transition-colors duration-200 hover:text-white/80"
                 >
                   {link.label}

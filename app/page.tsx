@@ -14,11 +14,11 @@ import VideoManifesto from "@/components/VideoManifesto";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Dor crônica não se resolve em partes",
+  title: "Ciência e empatia na gestão do bem-estar",
   description:
-    "A Bem-wir integra fisioterapia especializada em neurociências, psicologia e neuromodulação para quadros de dor crônica, TEPT, depressão e dores orofaciais persistentes.",
+    "A Bem-wir integra fisioterapia especializada em neurociências, psicologia e neuromodulação. Tratamento global para fibromialgia, depressão, TDAH e dores orofaciais crônicas.",
   openGraph: {
-    title: "Bem-wir | Dor crônica não se resolve em partes",
+    title: "Bem-wir | Remodulando cérebro, corpo e vida",
     description:
       "Cuidado integrado para quadros em que corpo, sistema nervoso e contexto emocional precisam ser lidos em conjunto.",
   },

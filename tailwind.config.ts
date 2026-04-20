@@ -25,8 +25,12 @@ const config: Config = {
         sage: "#d4e198",
       },
       fontFamily: {
-        sans: ["var(--font-mulish)", "Avenir Next", "sans-serif"],
-        serif: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
+        // Corpo: Nunito (substituto Google Fonts do Avenir Next oficial do manual da marca)
+        sans: ["var(--font-nunito)", "Avenir Next", "sans-serif"],
+        // Títulos: Montserrat Black (fonte institucional oficial do manual Bem-wir)
+        // A chave "serif" é mantida por compatibilidade (embora agora aponte pra sans)
+        serif: ["var(--font-montserrat)", "Montserrat", "Helvetica Neue", "sans-serif"],
+        display: ["var(--font-montserrat)", "Montserrat", "Helvetica Neue", "sans-serif"],
       },
     },
   },

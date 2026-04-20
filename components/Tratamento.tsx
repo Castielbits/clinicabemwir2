@@ -16,19 +16,21 @@ export default function Tratamento() {
       <div className="absolute -top-24 -right-24 w-[35vw] h-[35vw] rounded-full bg-butter/25 blur-[80px] pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-[25vw] h-[25vw] rounded-full bg-sage/15 blur-[60px] pointer-events-none" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-10">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-10">
 
         <ScrollReveal>
-          <SectionHeader
-            eyebrow={methodSection.eyebrow}
-            title={methodSection.title}
-            description={methodSection.description}
-            align="center"
-          />
+          <div className="px-2 sm:px-0">
+            <SectionHeader
+              eyebrow={methodSection.eyebrow}
+              title={methodSection.title}
+              description={methodSection.description}
+              align="center"
+            />
+          </div>
         </ScrollReveal>
 
         {/* Pilares com ícones */}
-        <div className="mt-20 grid gap-10 lg:grid-cols-3">
+        <div className="mt-16 sm:mt-20 grid gap-8 sm:gap-10 lg:grid-cols-3">
           {methodPillars.map((pillar, index) => (
             <ScrollReveal key={pillar.title} delay={index + 1}>
               <article className="flex flex-col gap-6">

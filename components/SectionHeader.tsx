@@ -31,7 +31,7 @@ export default function SectionHeader({
         <span>{eyebrow}</span>
       </div>
       <h2
-        className={`heading-serif text-3xl sm:text-4xl lg:text-[3.2rem] ${titleColor}`}
+        className={`heading-serif text-[1.65rem] xs:text-3xl sm:text-4xl lg:text-[3.2rem] ${titleColor} break-words`}
       >
         {title}
       </h2>

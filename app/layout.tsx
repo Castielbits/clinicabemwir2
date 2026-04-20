@@ -1,35 +1,37 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Mulish } from "next/font/google";
+import { Montserrat, Nunito } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+// Montserrat Black (peso 900) é a fonte institucional oficial do manual da Bem-wir
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-playfair",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
-const mulish = Mulish({
+// Nunito é o substituto Google Fonts mais próximo do Avenir Next (fonte web oficial da marca)
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-mulish",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Bem-wir | Cuidado integrado para dor crônica e sofrimento persistente",
+    default: "Bem-wir | Ciência e empatia na gestão do bem-estar",
     template: "%s | Bem-wir",
   },
   description:
-    "Clínica de cuidado integrado que combina fisioterapia especializada em neurociências, psicologia e neuromodulação para dor crônica, TEPT, depressão e dores orofaciais persistentes.",
+    "Cuidado integrado que combina fisioterapia especializada em neurociências, psicologia e neuromodulação. Tratamento global para fibromialgia, depressão, TDAH e dores orofaciais crônicas.",
   keywords: [
     "fibromialgia",
     "neuromodulação",
     "fisioterapia neurológica",
     "psicologia",
     "dor crônica",
-    "TEPT",
+    "TDAH",
     "depressão",
     "dores orofaciais",
     "tratamento integrado",
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Bem-wir Clínica" }],
   openGraph: {
-    title: "Bem-wir | Dor crônica não se resolve em partes",
+    title: "Bem-wir | Remodulando seu cérebro, corpo e vida",
     description:
       "Cuidado integrado que une fisioterapia especializada em neurociências, psicologia e neuromodulação.",
     type: "website",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bem-wir | Cuidado integrado para dor crônica",
+    title: "Bem-wir | Remodulando cérebro, corpo e vida",
     description:
       "Fisioterapia especializada em neurociências, psicologia e neuromodulação.",
   },
@@ -61,7 +63,7 @@ const organizationSchema = {
   "@type": "MedicalOrganization",
   name: "Bem-wir",
   description:
-    "Clínica de tratamento integrado que combina fisioterapia especializada em neurociências com psicologia",
+    "Clínica de tratamento integrado que combina fisioterapia especializada em neurociências, psicologia e neuromodulação",
   slogan: "ciência e empatia na gestão do bem-estar",
   medicalSpecialty: [
     "Fisioterapia em Neurociências",
@@ -83,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${playfair.variable} ${mulish.variable}`}>
+    <html lang="pt-BR" className={`${montserrat.variable} ${nunito.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -92,7 +94,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={mulish.className}>
+      <body className={nunito.className}>
         <div className="noise-overlay" aria-hidden="true" />
         {children}
       </body>

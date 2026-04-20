@@ -11,6 +11,8 @@
   --color-dark-deep:   #3d1555;
   --color-ink:         #2d2d2d;
   --color-muted:       #6b6b6b;
+  /* Cinza oficial do manual (uso secundário, em legendas e placeholders) */
+  --color-gray-brand:  #a8a8a7;
   --color-butter:      #fde9a2;
   --color-blush:       #fbdad0;
   --color-sage:        #d4e198;
@@ -27,7 +29,7 @@ body {
   min-height: 100vh;
   color: var(--color-ink);
   background: var(--color-cream);
-  font-family: var(--font-mulish), "Avenir Next", "Segoe UI", sans-serif;
+  font-family: var(--font-nunito), "Avenir Next", "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -90,13 +92,27 @@ a {
   background-size: 200px 200px;
 }
 
-/* ── Editorial Typography ──────────────────────────────── */
+/* ── Tipografia institucional (Manual Bem-wir) ─────────────
+   Títulos: Montserrat Black conforme manual oficial da marca.
+   Peso 800 como default pra manter hierarquia sem pesar demais.
+   Pra heroes grandes, usar .heading-serif.is-display (900). */
 .heading-serif {
-  font-family: var(--font-playfair), "Playfair Display", "Georgia", serif;
-  font-weight: 700;
-  line-height: 1.18;
+  font-family: var(--font-montserrat), "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  hyphens: none;
+  -webkit-hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.heading-serif.is-display,
+.hero-title {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .eyebrow {
@@ -124,6 +140,43 @@ a {
 
 .eyebrow-line.dark::before {
   background: rgba(95, 36, 131, 0.24);
+}
+
+/* ── Highlight (marca-texto animado) ──────────────────────
+   Riscar uma palavra como se passasse um marca-texto por cima.
+   A barra fica atrás do texto, cresce horizontalmente quando o
+   elemento entra na viewport. Default cor butter (#fde9a2). */
+.highlight-word {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.highlight-word::before {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.08em;
+  height: 0.55em;
+  background: var(--highlight-color, rgba(253, 233, 162, 0.85));
+  border-radius: 2px;
+  transform: scaleX(var(--highlight-scale, 0));
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.65, 0.05, 0.36, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.highlight-word-text {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlight-word::before {
+    transition: none;
+  }
 }
 
 /* ── Scroll Reveal Animation ───────────────────────────── */
@@ -294,3 +347,592 @@ a {
 .animation-delay-2000 { animation-delay: 2s; }
 .animation-delay-4000 { animation-delay: 4s; }
 .animation-delay-6000 { animation-delay: 6s; }
+
+/* ── Multi-step Form Animations ────────────────────────── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-slide-in-right {
+  animation: slideInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-slide-in-left {
+  animation: slideInLeft 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.35s ease-out both;
+}
+
+/* ── Form Imersivo: Blobs de Fundo ─────────────────────── */
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5vw, -4vh) scale(1.08); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4vw, 5vh) scale(1.1); }
+}
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(0.95); }
+  50% { transform: translate(3vw, 3vh) scale(1.05); }
+}
+
+.immersive-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.55;
+  pointer-events: none;
+  transition: background 2s ease-in-out, opacity 2s ease-in-out;
+  will-change: transform;
+}
+
+.immersive-blob-1 { animation: blobFloat1 28s ease-in-out infinite; }
+.immersive-blob-2 { animation: blobFloat2 32s ease-in-out infinite; animation-delay: -8s; }
+.immersive-blob-3 { animation: blobFloat3 24s ease-in-out infinite; animation-delay: -14s; }
+
+/* ── Pills Orgânicas ───────────────────────────────────── */
+/* Morph sutil — variações pequenas pra não colapsar a forma */
+@keyframes morphShape {
+  0%, 100% { border-radius: 28px 36px 30px 34px / 32px 28px 36px 30px; }
+  50% { border-radius: 34px 28px 36px 30px / 28px 34px 30px 36px; }
+}
+
+.pill-organic {
+  border-radius: 28px 36px 30px 34px / 32px 28px 36px 30px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease, border-color 0.4s ease,
+              box-shadow 0.5s ease, color 0.3s ease,
+              border-radius 0.6s ease;
+}
+
+.pill-organic:nth-child(2n) {
+  border-radius: 34px 28px 36px 30px / 28px 34px 30px 36px;
+}
+.pill-organic:nth-child(3n) {
+  border-radius: 30px 34px 28px 36px / 36px 30px 34px 28px;
+}
+.pill-organic:nth-child(4n) {
+  border-radius: 36px 30px 34px 28px / 30px 36px 28px 34px;
+}
+
+/* Pills butter (amarelo suave) — ímpares */
+.pill-wrap:nth-child(odd) .pill-organic:not(.is-selected) {
+  background: rgba(253, 233, 162, 0.25);
+  border-color: rgba(204, 170, 60, 0.25);
+  color: var(--color-ink);
+}
+.pill-wrap:nth-child(odd) .pill-organic:not(.is-selected):hover {
+  background: rgba(253, 233, 162, 0.55);
+  border-color: rgba(204, 170, 60, 0.5);
+}
+
+/* Pills sage (verde-limão) — pares */
+.pill-wrap:nth-child(even) .pill-organic:not(.is-selected) {
+  background: rgba(212, 225, 152, 0.25);
+  border-color: rgba(140, 170, 80, 0.25);
+  color: var(--color-ink);
+}
+.pill-wrap:nth-child(even) .pill-organic:not(.is-selected):hover {
+  background: rgba(212, 225, 152, 0.55);
+  border-color: rgba(140, 170, 80, 0.5);
+}
+
+.pill-organic:hover:not(.is-selected) {
+  animation: morphShape 5s ease-in-out infinite;
+  transform: translateY(-3px);
+}
+
+/* Selecionada: roxo sólido (marca) */
+.pill-organic.is-selected {
+  background: var(--color-dark) !important;
+  border-color: var(--color-dark) !important;
+  color: #FAF7F2 !important;
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(95, 36, 131, 0.35);
+}
+
+/* ── Input Underline (card claro) ──────────────────────── */
+.field-underline {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(95, 36, 131, 0.18);
+  color: var(--color-ink);
+  padding: 0.75rem 0;
+  font-size: 1.125rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+
+.field-underline::placeholder {
+  color: rgba(45, 45, 45, 0.35);
+}
+
+.field-underline:focus {
+  outline: none;
+  border-bottom-color: transparent;
+}
+
+.field-underline-wrap {
+  position: relative;
+}
+
+.field-underline-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-dark), #d4e198);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.field-underline-wrap:focus-within::after {
+  width: 100%;
+}
+
+.field-underline.has-error {
+  border-bottom-color: rgba(220, 50, 50, 0.7);
+}
+
+/* ── Transições Teatrais entre Passos ──────────────────── */
+@keyframes stepEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.step-enter {
+  animation: stepEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.step-child-stagger > * {
+  opacity: 0;
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.step-child-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.step-child-stagger > *:nth-child(2) { animation-delay: 0.15s; }
+.step-child-stagger > *:nth-child(3) { animation-delay: 0.25s; }
+.step-child-stagger > *:nth-child(4) { animation-delay: 0.35s; }
+
+/* Stagger aplicado em wrapper externo pra não conflitar com animação das pills */
+.pill-grid .pill-wrap {
+  opacity: 0;
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.pill-grid .pill-wrap:nth-child(1) { animation-delay: 0.30s; }
+.pill-grid .pill-wrap:nth-child(2) { animation-delay: 0.38s; }
+.pill-grid .pill-wrap:nth-child(3) { animation-delay: 0.46s; }
+.pill-grid .pill-wrap:nth-child(4) { animation-delay: 0.54s; }
+.pill-grid .pill-wrap:nth-child(5) { animation-delay: 0.62s; }
+.pill-grid .pill-wrap:nth-child(6) { animation-delay: 0.70s; }
+
+/* ── Botão Pill (card claro) ───────────────────────────── */
+.btn-pill-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  border-radius: 999px;
+  background: var(--color-dark);
+  color: #FAF7F2;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-pill-light:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(95, 36, 131, 0.3);
+  background: var(--color-dark-deep);
+}
+
+.btn-pill-light:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-pill-light svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-light:hover:not(:disabled) svg {
+  transform: translateX(4px);
+}
+
+/* ── Form Card Editorial ───────────────────────────────── */
+.form-glass-container {
+  position: relative;
+  background: #FAF7F2;
+  border-radius: 24px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.35),
+    0 12px 32px -8px rgba(0, 0, 0, 0.2);
+  color: var(--color-ink);
+}
+
+/* Header estruturado do card */
+.form-card-header {
+  position: relative;
+  padding: 1.75rem 2rem 1.5rem;
+  border-bottom: 1px solid rgba(95, 36, 131, 0.08);
+  background: linear-gradient(180deg, #FAF7F2 0%, #F5F0E8 100%);
+}
+
+.form-card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-dark);
+  color: #FAF7F2;
+  flex-shrink: 0;
+}
+
+.form-card-body {
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+@media (min-width: 640px) {
+  .form-card-header {
+    padding: 2rem 2.5rem 1.75rem;
+  }
+}
+
+/* ── Progress Bar Gradiente ────────────────────────────── */
+.progress-gradient {
+  background: linear-gradient(90deg, var(--color-dark), #fde9a2, #d4e198);
+  background-size: 200% 100%;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              background-position 1.2s ease;
+}
+
+/* ── Reduced Motion para animações novas ───────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .immersive-blob,
+  .pill-organic,
+  .pill-organic:hover:not(.is-selected) {
+    animation: none !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   Navbar — Hamburguer animado + Drawer premium
+   ════════════════════════════════════════════════════════ */
+
+/* Botão hamburguer com barras animadas */
+.menu-toggle {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.menu-toggle--light {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.menu-toggle--light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.menu-toggle--solid {
+  border-color: rgba(95, 36, 131, 0.14);
+  background: rgba(95, 36, 131, 0.04);
+}
+
+.menu-toggle--solid:hover {
+  background: rgba(95, 36, 131, 0.08);
+  border-color: rgba(95, 36, 131, 0.25);
+}
+
+.menu-toggle.is-open {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+}
+
+.menu-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              opacity 0.25s ease,
+              width 0.3s ease,
+              background 0.3s ease;
+  transform-origin: center;
+}
+
+.menu-toggle--light .menu-toggle-bar {
+  background: #ffffff;
+}
+
+.menu-toggle--solid .menu-toggle-bar {
+  background: var(--color-dark);
+}
+
+.menu-toggle.is-open .menu-toggle-bar {
+  background: #FAF7F2;
+}
+
+/* Barra do meio é mais curta - detalhe de design */
+.menu-toggle-bar--mid {
+  width: 12px;
+  align-self: flex-end;
+  margin-right: 13px;
+}
+
+/* Animação quando abre - transforma em X */
+.menu-toggle.is-open .menu-toggle-bar--top {
+  transform: translateY(7px) rotate(45deg);
+  width: 18px;
+}
+
+.menu-toggle.is-open .menu-toggle-bar--mid {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.menu-toggle.is-open .menu-toggle-bar--bot {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Drawer mobile premium ───────────────────────────────── */
+.mobile-drawer {
+  position: fixed;
+  top: 72px;
+  left: 1rem;
+  right: 1rem;
+  z-index: 49;
+  background: #FAF7F2;
+  border-radius: 20px;
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.25),
+    0 12px 32px -8px rgba(95, 36, 131, 0.18);
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+  transform-origin: top right;
+  pointer-events: none;
+  transition:
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.mobile-drawer::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -80px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(253, 233, 162, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mobile-drawer::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212, 225, 152, 0.32) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mobile-drawer.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.mobile-drawer-inner {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+/* Links do drawer com stagger */
+.mobile-drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid rgba(95, 36, 131, 0.08);
+  color: var(--color-ink);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+.mobile-drawer.is-open .mobile-drawer-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-drawer-link:last-of-type {
+  border-bottom: none;
+}
+
+.mobile-drawer-link:hover,
+.mobile-drawer-link:active {
+  color: var(--color-dark);
+  padding-left: 0.75rem;
+}
+
+.mobile-drawer-link-arrow {
+  color: rgba(95, 36, 131, 0.3);
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, color 0.25s ease;
+}
+
+.mobile-drawer-link:hover .mobile-drawer-link-arrow,
+.mobile-drawer-link:active .mobile-drawer-link-arrow {
+  transform: translateX(4px);
+  color: var(--color-dark);
+}
+
+.mobile-drawer-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(95, 36, 131, 0.12) 50%,
+    transparent 100%
+  );
+  margin: 1.5rem 0 1.25rem;
+}
+
+/* Botão WhatsApp dentro do drawer */
+.mobile-drawer-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: rgba(212, 225, 152, 0.35);
+  border: 1px solid rgba(140, 170, 80, 0.35);
+  border-radius: 14px;
+  color: var(--color-ink);
+  transition: all 0.3s ease;
+}
+
+.mobile-drawer-whatsapp:hover,
+.mobile-drawer-whatsapp:active {
+  background: rgba(212, 225, 152, 0.55);
+  border-color: rgba(140, 170, 80, 0.5);
+  transform: translateY(-1px);
+}
+
+.mobile-drawer-whatsapp-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #25D366;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+/* Backdrop blur atrás do drawer aberto */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 72px;
+  z-index: 48;
+  background: rgba(15, 8, 30, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.mobile-drawer-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer,
+  .mobile-drawer-link,
+  .menu-toggle-bar {
+    transition: opacity 0.15s ease !important;
+    transform: none !important;
+  }
+}

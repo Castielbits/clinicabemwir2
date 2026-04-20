@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/siteContent";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -28,8 +29,8 @@ export default function WhatsAppButton() {
       }`}
       aria-label="Falar no WhatsApp"
     >
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-dark text-white">
-        <MessageCircle size={18} />
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
+        <WhatsAppIcon size={18} />
       </span>
       <span className="hidden pr-1 text-left sm:block">
         <span className="block eyebrow text-dark/40" style={{ fontSize: "0.55rem" }}>

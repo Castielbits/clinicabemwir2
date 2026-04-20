@@ -25,16 +25,16 @@ export const navLinks = [
 ];
 
 export const heroContent = {
-  eyebrow: "Programas integrados para dor crônica e sofrimento persistente",
-  title: "Cuidar da dor também é cuidar da vida em volta dela.",
+  eyebrow: "Ciência e empatia na gestão do bem-estar",
+  title: "Remodulando cérebro, corpo e vida.",
   intro:
-    "A Bem-wir integra fisioterapia especializada em neurociências, psicologia e neuromodulação para acompanhar o corpo, o sistema nervoso e o contexto emocional como partes de um mesmo processo.",
+    "A Bem-wir junta fisioterapia em neurociências, psicologia e neuromodulação no mesmo programa. Corpo, sistema nervoso e contexto emocional são lidos juntos.",
   body:
-    "Quando a dor atravessa sono, humor, atenção, trabalho e vínculos, o cuidado precisa ser clínico, coordenado e humano.",
+    "Quando a dor persiste, sono, humor, trabalho e relações quase sempre vão junto. O cuidado aqui é clínico, coordenado e humano.",
   badges: [
     "Fibromialgia",
     "Depressão",
-    "TEPT",
+    "TDAH",
     "Dores orofaciais crônicas",
   ],
 };
@@ -43,46 +43,46 @@ export const conditionsSection = {
   eyebrow: "Para quem é",
   title: "Tudo bem precisar de apoio. Você não está só.",
   description:
-    "A Bem-wir foi pensada para casos em que a dor ou o sofrimento persistente já atravessam diferentes áreas da vida e pedem um cuidado clínico menos fragmentado.",
+    "A Bem-wir foi pensada para quem já convive com dor ou sofrimento persistente que atravessa várias áreas da vida e precisa de um cuidado clínico que não funciona em pedaços.",
   manifesto:
-    "Muitos pacientes chegam depois de anos entre abordagens pontuais, melhoras parciais e recaídas. O ponto de partida aqui é entender o conjunto, e não apenas o sintoma mais visível.",
+    "Muitos pacientes chegam depois de anos tentando abordagens isoladas. Aqui o ponto de partida é entender o caso inteiro, não só o sintoma mais visível.",
 };
 
 export const conditions = [
   {
     title: "Dor crônica",
     summary:
-      "Quando o corpo permanece em alerta e a dor passa a organizar a rotina inteira.",
+      "O corpo fica em alerta constante e a dor começa a organizar a rotina inteira.",
   },
   {
     title: "Fibromialgia",
     summary:
-      "Quando a dor difusa, o cansaço e a instabilidade da rotina já não cabem em uma explicação simples.",
+      "Dor difusa, cansaço e instabilidade que já não cabem em uma explicação simples.",
   },
   {
     title: "Depressão e sofrimento persistente",
     summary:
-      "Quando o corpo desacelera, a energia muda e o dia a dia perde previsibilidade e sustentação.",
+      "O corpo desacelera, a energia muda e o dia a dia perde previsibilidade.",
   },
   {
-    title: "TEPT e estados de hiperalerta",
+    title: "TDAH e estados de hiperalerta",
     summary:
-      "Quando o sistema nervoso permanece em vigilância e isso reverbera em sono, atenção, relações e dor.",
+      "O sistema nervoso fica em vigilância e isso reverbera no sono, na atenção e na dor.",
   },
   {
     title: "Dores orofaciais crônicas",
     summary:
-      "Quando mandíbula, face, cabeça e pescoço passam a concentrar tensão, sensibilidade e limitação funcional.",
+      "Mandíbula, face, cabeça e pescoço concentram tensão e sensibilidade que limitam a função.",
   },
   {
     title: "Insônia e fadiga associadas à dor",
     summary:
-      "Quando descanso e recuperação deixam de acontecer e o corpo perde margem de regulação.",
+      "Descanso e recuperação deixam de acontecer e o corpo perde margem para se regular.",
   },
   {
     title: "Ansiedade e sobrecarga corporal",
     summary:
-      "Quando preocupação, tensão e dor se alimentam mutuamente ao longo do dia.",
+      "Preocupação, tensão e dor se alimentam ao longo do dia e ninguém consegue desacelerar.",
   },
 ];
 
@@ -105,7 +105,7 @@ export const methodSection = {
   eyebrow: "Método Bem-wir",
   title: "Psicologia, fisioterapia e neuromodulação em conversa constante.",
   description:
-    "O método combina avaliação ampla, plano personalizado e acompanhamento contínuo. Não é uma sequência de procedimentos avulsos, e sim um raciocínio clínico compartilhado.",
+    "Avaliação estratégica, plano personalizado, acompanhamento que muda conforme a resposta do paciente. As profissionais pensam o caso juntas em vez de cada uma cuidar de um pedaço.",
 };
 
 export const methodSteps = [
@@ -122,7 +122,7 @@ export const methodSteps = [
   {
     number: "03",
     title: "Ajuste ao longo do processo",
-    text: "A condução clínica é revista com base na resposta do paciente, preservando coerência entre corpo, emoção e vida prática.",
+    text: "A condução é revista conforme o paciente responde. Nada fica no piloto automático.",
   },
 ];
 
@@ -146,7 +146,7 @@ export const methodFocus = [
   "Adolescentes e adultos",
   "Dor persistente",
   "Dores orofaciais",
-  "TEPT e trauma",
+  "TDAH e trauma",
   "Humor, sono e regulação",
 ];
 
@@ -178,7 +178,7 @@ export const foundersSection = {
   eyebrow: "Fundadoras",
   title: "Dois olhares clínicos, um mesmo raciocínio de cuidado.",
   description:
-    "A Bem-wir foi criada por duas profissionais com trajetórias distintas e um ponto de convergência: a dor persistente precisa ser entendida como um processo — corporal, emocional e de vida.",
+    "A Bem-wir foi criada por duas profissionais de trajetórias diferentes que enxergam a dor persistente do mesmo jeito: um processo que envolve corpo, emoção e rotina, e que precisa ser tratado assim.",
 };
 
 export const founders = [
@@ -200,7 +200,7 @@ export const videoSection = {
   eyebrow: "Apresentação",
   title: "Conheça as fundadoras e o método que orienta cada programa.",
   description:
-    "Uma conversa direta sobre como a Bem-wir pensa o cuidado — por que a integração entre fisioterapia em neurociências, psicologia e neuromodulação faz diferença real em casos persistentes.",
+    "Uma conversa direta sobre como a Bem-wir pensa o cuidado e por que tratar fisioterapia em neurociências, psicologia e neuromodulação como um único programa faz diferença em casos persistentes.",
   status: "Em breve",
 };
 
@@ -235,7 +235,7 @@ export const eligibilitySection = {
   eyebrow: "Triagem inicial",
   title: "Veja se o método Bem-wir faz sentido para o seu caso.",
   description:
-    "Responda algumas perguntas e nossa equipe usa essas informações para fazer um primeiro filtro clínico e orientar o próximo passo.",
+    "Responda algumas perguntas. A equipe lê suas respostas, faz um primeiro filtro clínico e orienta o próximo passo conforme o seu caso.",
   note: "Formulário de pré-avaliação.",
 };
 
@@ -245,7 +245,7 @@ export const eligibilityOptions = {
     { value: "dor-cronica", label: "Dor crônica" },
     { value: "fibromialgia", label: "Fibromialgia" },
     { value: "depressao-ansiedade", label: "Depressão / Ansiedade" },
-    { value: "tept", label: "TEPT" },
+    { value: "tdah", label: "TDAH" },
     { value: "dores-orofaciais", label: "Dores orofaciais / DTM" },
     { value: "outra", label: "Outra" },
   ],
@@ -267,7 +267,7 @@ export const eligibilityOptions = {
 export const contactSection = {
   title: "Se preferir, fale direto com a equipe.",
   description:
-    "WhatsApp para dúvidas iniciais, orientação sobre elegibilidade e encaminhamento para o próximo passo.",
+    "WhatsApp pra tirar dúvidas, entender se o método se aplica ao seu caso e combinar o próximo passo.",
 };
 
 export const faqSection = {
@@ -279,7 +279,7 @@ export const faqs = [
   {
     question: "Para quem é indicado o método Bem-wir?",
     answer:
-      "Para pessoas com dor crônica, fibromialgia, depressão associada à dor, TEPT, dores orofaciais persistentes ou outras condições em que corpo e sistema nervoso precisam ser lidos juntos. A triagem inicial nos ajuda a entender se o seu caso se enquadra bem.",
+      "Para pessoas com dor crônica, fibromialgia, depressão associada à dor, TDAH, dores orofaciais persistentes ou outras condições em que corpo e sistema nervoso precisam ser lidos juntos. A triagem inicial nos ajuda a entender se o seu caso se enquadra bem.",
   },
   {
     question: "O que é neuromodulação e como ela entra no tratamento?",
@@ -358,7 +358,7 @@ export const neuroIndications = [
     text: "Quando há dor difusa, cansaço, sensibilidade aumentada e impacto amplo na rotina.",
   },
   {
-    title: "TEPT e hiperalerta",
+    title: "TDAH e hiperalerta",
     text: "Quando a resposta do sistema nervoso permanece elevada e isso interfere em sono, atenção e regulação corporal.",
   },
   {

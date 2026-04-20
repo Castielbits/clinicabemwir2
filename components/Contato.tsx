@@ -1,6 +1,7 @@
-import { ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { contactSection, siteConfig } from "@/data/siteContent";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Contato() {
   return (
@@ -30,8 +31,8 @@ export default function Contato() {
                 className="group flex h-full flex-col justify-between rounded-2xl bg-dark p-8 text-white transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-                    <MessageCircle size={20} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]">
+                    <WhatsAppIcon size={22} />
                   </div>
                   <ArrowUpRight
                     size={16}

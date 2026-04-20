@@ -42,7 +42,7 @@ export default function Equipe() {
                     className="relative z-10 eyebrow text-ink/30"
                     style={{ fontSize: "0.55rem" }}
                   >
-                    Foto em produção
+                    Fotos em breve
                   </span>
                 </div>
 
